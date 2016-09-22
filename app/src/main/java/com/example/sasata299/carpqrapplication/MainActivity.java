@@ -3,11 +3,12 @@ package com.example.sasata299.carpqrapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AsyncTaskCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setTextView(String res) {
+    public void preExecute() {
+        Log.i("logger", "preExecute");
+    }
+
+    public void postExecute(String result) {
+        Log.i("logger", "postExecute");
+
         TextView text = (TextView) findViewById(R.id.text);
-        text.setText(res);
+        text.setText(result);
+    }
+
+    public void progressUpdate(int progress) {
+        Log.i("logger", "progreessUpdate");
+    }
+
+    public void cancel() {
+        Log.i("logger", "cancel");
     }
 }

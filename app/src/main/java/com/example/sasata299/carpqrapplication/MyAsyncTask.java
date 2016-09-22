@@ -1,6 +1,5 @@
 package com.example.sasata299.carpqrapplication;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -9,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -18,14 +16,20 @@ import okhttp3.Response;
 /**
  * Created by sasata299 on 16/09/19.
  */
-public class MyAsyncTask extends AsyncTask<Void, Void, String> {
+public class MyAsyncTask extends AsyncTask<Void, Integer, String> {
 
     OkHttpClient client = new OkHttpClient();
-    Context context;
+    AsyncTaskCallback callback;
 
-    public MyAsyncTask(Context context) {
+    public MyAsyncTask(AsyncTaskCallback callback) {
         super();
-        this.context = context;
+        this.callback = callback;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        callback.preExecute();
     }
 
     @Override
@@ -54,10 +58,19 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String res) {
         super.onPostExecute(res);
+        callback.postExecute(res);
+    }
 
-//        Toast.makeText(context, res, Toast.LENGTH_LONG).show();
-        MainActivity mainActivity = (MainActivity) context;
-        mainActivity.setTextView(res);
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        super.onProgressUpdate(values);
+        callback.progressUpdate(values[0]);
+    }
+
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
+        callback.cancel();
     }
 
     // OkHttpを使った処理
