@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity implements AsyncTaskCallback {
 
     @Override
@@ -32,11 +35,19 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
         Log.i("logger", "preExecute");
     }
 
-    public void postExecute(String result) {
+    public void postExecute(JSONObject result) {
+        String detail = null;
         Log.i("logger", "postExecute");
 
         TextView text = (TextView) findViewById(R.id.text);
-        text.setText(result);
+
+        try {
+            detail = result.getString("detail");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        text.setText(detail);
     }
 
     public void progressUpdate(int progress) {
