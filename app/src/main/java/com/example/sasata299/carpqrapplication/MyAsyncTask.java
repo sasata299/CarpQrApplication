@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,7 +17,7 @@ import okhttp3.Response;
 /**
  * Created by sasata299 on 16/09/19.
  */
-public class MyAsyncTask extends AsyncTask<Void, Integer, String> {
+public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<QuickReport>> {
 
     OkHttpClient client = new OkHttpClient();
     AsyncTaskCallback callback;
@@ -33,18 +34,21 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, String> {
     }
 
     @Override
-    protected String doInBackground(Void... params) {
-        String res = null;
+    protected ArrayList<QuickReport> doInBackground(Void... params) {
+        ArrayList<QuickReport> data = new ArrayList<>();
 
         try {
-            String result = run("http://api.openweathermap.org/data/2.5/weather?APPID=<apiKey>&q=Tokyo");
+            String result = run("http://sasata299.com:3000/score_reports");
             Log.i("show result", result);
             JSONObject resJson = new JSONObject(result);
-            JSONArray weathers = resJson.getJSONArray("weather");
-            JSONObject weather = weathers.getJSONObject(0);
-            String description = weather.getString("description");
-            Log.i("show description", description);
-            res = description;
+            JSONArray scoreReports = resJson.getJSONArray("score_reports");
+
+            if (scoreReports != null) {
+                for (int i = 0; i < scoreReports.length(); i++){
+                    QuickReport quickReport = new QuickReport(scoreReports.getJSONObject(i));
+                    data.add(quickReport);
+                }
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,13 +56,13 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, String> {
             e.printStackTrace();
         }
 
-        return res;
+        return data;
     }
 
     @Override
-    protected void onPostExecute(String res) {
-        super.onPostExecute(res);
-        callback.postExecute(res);
+    protected void onPostExecute(ArrayList<QuickReport> result) {
+        super.onPostExecute(result);
+        callback.postExecute(result);
     }
 
     @Override
