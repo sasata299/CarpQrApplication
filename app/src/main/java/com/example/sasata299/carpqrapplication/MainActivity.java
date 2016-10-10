@@ -2,52 +2,41 @@ package com.example.sasata299.carpqrapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AsyncTaskCallback {
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
-        Button btn = (Button) findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyAsyncTask task = new MyAsyncTask(MainActivity.this);
-                task.execute();
-            }
-        });
+        MyAsyncTask task = new MyAsyncTask(MainActivity.this);
+        task.execute();
     }
 
     public void preExecute() {
         Log.i("logger", "preExecute");
     }
 
-    public void postExecute(JSONObject result) {
-        String detail = null;
+    public void postExecute(ArrayList<QuickReport> result) {
         Log.i("logger", "postExecute");
 
-        TextView text = (TextView) findViewById(R.id.text);
+        listView = (ListView) findViewById(R.id.listView);
 
-        try {
-            detail = result.getString("detail");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        MyAdapter myAdapter = new MyAdapter(this);
+        myAdapter.setQuickReports(result);
 
-        text.setText(detail);
+        // Adapterの指定
+        listView.setEmptyView(findViewById(R.id.emptyView));
+        listView.setAdapter(myAdapter);
     }
 
     public void progressUpdate(int progress) {

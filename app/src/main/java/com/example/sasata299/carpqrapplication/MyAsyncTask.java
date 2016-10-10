@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,7 +17,7 @@ import okhttp3.Response;
 /**
  * Created by sasata299 on 16/09/19.
  */
-public class MyAsyncTask extends AsyncTask<Void, Integer, JSONObject> {
+public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<QuickReport>> {
 
     OkHttpClient client = new OkHttpClient();
     AsyncTaskCallback callback;
@@ -33,15 +34,21 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, JSONObject> {
     }
 
     @Override
-    protected JSONObject doInBackground(Void... params) {
-        JSONObject res = null;
+    protected ArrayList<QuickReport> doInBackground(Void... params) {
+        ArrayList<QuickReport> data = new ArrayList<>();
 
         try {
             String result = run("http://sasata299.com:3000/score_reports");
             Log.i("show result", result);
             JSONObject resJson = new JSONObject(result);
             JSONArray scoreReports = resJson.getJSONArray("score_reports");
-            res = scoreReports.getJSONObject(0);
+
+            if (scoreReports != null) {
+                for (int i = 0; i < scoreReports.length(); i++){
+                    QuickReport quickReport = new QuickReport(scoreReports.getJSONObject(i));
+                    data.add(quickReport);
+                }
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,11 +56,11 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, JSONObject> {
             e.printStackTrace();
         }
 
-        return res;
+        return data;
     }
 
     @Override
-    protected void onPostExecute(JSONObject result) {
+    protected void onPostExecute(ArrayList<QuickReport> result) {
         super.onPostExecute(result);
         callback.postExecute(result);
     }

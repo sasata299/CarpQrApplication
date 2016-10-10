@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
-        sha1="647459d9832a500d0172ea08c8ab49380e36dead">
+        sha1="27220d87cb3b3aa4af401db578d153e7e1400128">
         <dex dex="/Users/sasata299/work/AndroidStudioProjects/CarpQrApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3e4af6062cadfebb1b6cce25d65fc6591e20f59a/classes.dex" />
     </item>
     <item
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
-        sha1="58dfed19a4105c5232a0db1babf832875314c26a">
+        sha1="212810e32dd0f71abbfed15ce4321f2b73dff57f">
         <dex dex="/Users/sasata299/work/AndroidStudioProjects/CarpQrApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_bad4be6db9d5e91617bbf06505fd6e89b55df860/classes.dex" />
     </item>
 

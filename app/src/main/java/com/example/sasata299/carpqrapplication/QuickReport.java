@@ -2,6 +2,9 @@ package com.example.sasata299.carpqrapplication;
 
 import android.graphics.Bitmap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by sasata299 on 2016/10/10.
  */
@@ -11,6 +14,11 @@ public class QuickReport {
     private Bitmap icon;
     private String inning;
     private String detail;
+
+    public QuickReport(JSONObject scoreReport) throws JSONException {
+        this.inning = scoreReport.getString("inning");
+        this.detail = scoreReport.getString("detail");
+    }
 
     public long getId() {
         return id;
