@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public interface AsyncTaskCallback {
     void preExecute();
-    void postExecute(ArrayList<QuickReport> result);
+    void postExecute(ArrayList<ScoreReport> result);
     void progressUpdate(int progress);
     void cancel();
 }

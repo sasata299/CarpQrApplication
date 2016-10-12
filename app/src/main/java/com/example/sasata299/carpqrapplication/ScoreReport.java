@@ -9,13 +9,13 @@ import org.json.JSONObject;
  * Created by sasata299 on 2016/10/10.
  */
 
-public class QuickReport {
+public class ScoreReport {
     long id;
     private Bitmap icon;
     private String inning;
     private String detail;
 
-    public QuickReport(JSONObject scoreReport) throws JSONException {
+    public ScoreReport(JSONObject scoreReport) throws JSONException {
         this.inning = scoreReport.getString("inning");
         this.detail = scoreReport.getString("detail");
     }

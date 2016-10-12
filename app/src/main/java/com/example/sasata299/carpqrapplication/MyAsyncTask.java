@@ -17,7 +17,7 @@ import okhttp3.Response;
 /**
  * Created by sasata299 on 16/09/19.
  */
-public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<QuickReport>> {
+public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<ScoreReport>> {
 
     OkHttpClient client = new OkHttpClient();
     AsyncTaskCallback callback;
@@ -34,8 +34,8 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<QuickReport>
     }
 
     @Override
-    protected ArrayList<QuickReport> doInBackground(Void... params) {
-        ArrayList<QuickReport> data = new ArrayList<>();
+    protected ArrayList<ScoreReport> doInBackground(Void... params) {
+        ArrayList<ScoreReport> data = new ArrayList<>();
 
         try {
             String result = run("http://sasata299.com:3000/score_reports");
@@ -45,8 +45,8 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<QuickReport>
 
             if (scoreReports != null) {
                 for (int i = 0; i < scoreReports.length(); i++){
-                    QuickReport quickReport = new QuickReport(scoreReports.getJSONObject(i));
-                    data.add(quickReport);
+                    ScoreReport scoreReport = new ScoreReport(scoreReports.getJSONObject(i));
+                    data.add(scoreReport);
                 }
             }
 
@@ -60,7 +60,7 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<QuickReport>
     }
 
     @Override
-    protected void onPostExecute(ArrayList<QuickReport> result) {
+    protected void onPostExecute(ArrayList<ScoreReport> result) {
         super.onPostExecute(result);
         callback.postExecute(result);
     }
