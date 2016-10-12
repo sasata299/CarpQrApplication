@@ -17,30 +17,30 @@ import java.util.ArrayList;
 public class MyAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater = null;
-    ArrayList<QuickReport> quickReports;
+    ArrayList<ScoreReport> scoreReports;
 
     public MyAdapter(Context context) {
         this.context = context;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setQuickReports(ArrayList<QuickReport> quickReports) {
-        this.quickReports = quickReports;
+    public void setScoreReports(ArrayList<ScoreReport> scoreReports) {
+        this.scoreReports = scoreReports;
     }
 
     @Override
     public int getCount() {
-        return quickReports.size();
+        return scoreReports.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return quickReports.get(position);
+        return scoreReports.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return quickReports.get(position).getId();
+        return scoreReports.get(position).getId();
     }
 
     @Override
@@ -48,7 +48,7 @@ public class MyAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.quick_report, parent, false);
+            convertView = layoutInflater.inflate(R.layout.score_report, parent, false);
 
             holder = new ViewHolder();
 
@@ -65,10 +65,10 @@ public class MyAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        QuickReport quickReport = quickReports.get(position);
-        holder.iconView.setImageBitmap(quickReport.getIcon());
-        holder.inningView.setText(quickReport.getInning());
-        holder.detailView.setText(quickReport.getDetail());
+        ScoreReport scoreReport = scoreReports.get(position);
+        holder.iconView.setImageBitmap(scoreReport.getIcon());
+        holder.inningView.setText(scoreReport.getInning());
+        holder.detailView.setText(scoreReport.getDetail());
 
         return convertView;
     }

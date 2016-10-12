@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
         Log.i("logger", "preExecute");
     }
 
-    public void postExecute(ArrayList<QuickReport> result) {
+    public void postExecute(ArrayList<ScoreReport> result) {
         Log.i("logger", "postExecute");
 
         listView = (ListView) findViewById(R.id.listView);
 
         MyAdapter myAdapter = new MyAdapter(this);
-        myAdapter.setQuickReports(result);
+        myAdapter.setScoreReports(result);
 
         // Adapterの指定
         listView.setEmptyView(findViewById(R.id.emptyView));
