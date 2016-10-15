@@ -35,7 +35,3 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Cache files
-build/
-projectFilesBackup/
