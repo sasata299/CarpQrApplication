@@ -66,7 +66,7 @@ public class MyAdapter extends BaseAdapter {
         }
 
         ScoreReport scoreReport = scoreReports.get(position);
-        holder.iconView.setImageBitmap(scoreReport.getIcon());
+//        holder.iconView.setImageBitmap(scoreReport.getIcon());
         holder.inningView.setText(scoreReport.getInning());
         holder.detailView.setText(scoreReport.getDetail());
 

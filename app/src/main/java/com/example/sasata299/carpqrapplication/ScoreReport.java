@@ -17,6 +17,7 @@ public class ScoreReport {
     private String detail;
 
     public ScoreReport(JSONObject scoreReport) throws JSONException {
+//        this.icon = BitmapFactory.decodeResource(getResources(), R.drawable.carp);
         this.inning = scoreReport.getString("inning");
         this.name = scoreReport.getString("name");
         this.detail = scoreReport.getString("detail");
@@ -28,10 +29,6 @@ public class ScoreReport {
 
     public Bitmap getIcon() {
         return icon;
-    }
-
-    public void setIcon(Bitmap icon) {
-        this.icon = icon;
     }
 
     public String getInning() {
