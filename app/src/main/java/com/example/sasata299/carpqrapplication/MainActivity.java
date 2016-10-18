@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("logger", "clicked! " + String.valueOf(position));
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("sampleValue", "foobar");
                 startActivity(intent);
             }
         });
