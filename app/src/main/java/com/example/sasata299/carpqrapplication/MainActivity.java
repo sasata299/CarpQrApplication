@@ -1,5 +1,6 @@
 package com.example.sasata299.carpqrapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("logger", "clicked! " + String.valueOf(position));
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                startActivity(intent);
             }
         });
     }
