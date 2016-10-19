@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -66,7 +68,7 @@ public class MyAdapter extends BaseAdapter {
         }
 
         ScoreReport scoreReport = scoreReports.get(position);
-//        holder.iconView.setImageBitmap(scoreReport.getIcon());
+        Picasso.with(context).load(R.mipmap.ic_carp).into(holder.iconView);
         holder.inningView.setText(scoreReport.getInning());
         holder.detailView.setText(scoreReport.getDetail());
 
