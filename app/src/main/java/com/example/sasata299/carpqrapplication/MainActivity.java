@@ -7,16 +7,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements AsyncTaskCallback {
-    ListView listView;
+    @BindView(R.id.listView) ListView listView;
+    @BindView(R.id.emptyView) TextView emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -32,13 +39,11 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
     public void postExecute(ArrayList<ScoreReport> result) {
         Log.i("logger", "postExecute");
 
-        listView = (ListView) findViewById(R.id.listView);
-
         MyAdapter myAdapter = new MyAdapter(this);
         myAdapter.setScoreReports(result);
 
         // Adapterの指定
-        listView.setEmptyView(findViewById(R.id.emptyView));
+        listView.setEmptyView(emptyView);
         listView.setAdapter(myAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
