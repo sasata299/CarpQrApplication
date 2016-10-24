@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
 
         createSwipeRefreshLayout();
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         reloadTimeline();
     }
 
