@@ -2,6 +2,9 @@ package com.example.sasata299.carpqrapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +20,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements AsyncTaskCallback {
     @BindView(R.id.listView) ListView listView;
     @BindView(R.id.emptyView) TextView emptyView;
+    @BindView(R.id.swipeRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +29,31 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
 
         ButterKnife.bind(this);
 
+        createSwipeRefreshLayout();
+
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+        reloadTimeline();
+    }
+
+    public void reloadTimeline() {
         MyAsyncTask task = new MyAsyncTask(MainActivity.this);
         task.execute();
+    }
+
+    public void createSwipeRefreshLayout() {
+        mSwipeRefreshLayout.setColorScheme(R.color.red, R.color.blue, R.color.green, R.color.yellow);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            // 引っ張ったときの処理
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                reloadTimeline();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     public void preExecute() {
