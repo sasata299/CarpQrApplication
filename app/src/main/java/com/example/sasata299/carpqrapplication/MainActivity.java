@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+        reloadTimeline();
+    }
+
+    public void reloadTimeline() {
         MyAsyncTask task = new MyAsyncTask(MainActivity.this);
         task.execute();
     }
@@ -46,14 +50,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
             @Override
             public void onRefresh() {
                 mSwipeRefreshLayout.setRefreshing(true);
-
-                // 3病後にインジケータを消す
-                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mSwipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 3000);
+                reloadTimeline();
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         });
     }
