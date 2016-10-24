@@ -58,6 +58,7 @@ public class MyAdapter extends BaseAdapter {
             // findViewByIdを初回だけにする
             holder.iconView = (ImageView) convertView.findViewById(R.id.icon);
             holder.inningView = (TextView) convertView.findViewById(R.id.inning);
+            holder.scoreView = (TextView) convertView.findViewById(R.id.score);
             holder.detailView = (TextView) convertView.findViewById(R.id.detail);
 
             // タグにホルダークラスを設定する
@@ -70,6 +71,7 @@ public class MyAdapter extends BaseAdapter {
         ScoreReport scoreReport = scoreReports.get(position);
         Picasso.with(context).load(R.mipmap.ic_carp).into(holder.iconView);
         holder.inningView.setText(scoreReport.getInning());
+        holder.scoreView.setText(scoreReport.getScore());
         holder.detailView.setText(scoreReport.getDetail());
 
         return convertView;

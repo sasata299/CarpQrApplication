@@ -10,5 +10,6 @@ import android.widget.TextView;
 public class ViewHolder {
     ImageView iconView;
     TextView inningView;
+    TextView scoreView;
     TextView detailView;
 }
