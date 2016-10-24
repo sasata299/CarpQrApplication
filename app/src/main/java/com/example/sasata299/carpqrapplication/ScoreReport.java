@@ -13,11 +13,13 @@ public class ScoreReport {
     long id;
     private Bitmap icon;
     private String inning;
+    private String score;
     private String name;
     private String detail;
 
     public ScoreReport(JSONObject scoreReport) throws JSONException {
         this.inning = scoreReport.getString("inning");
+        this.score = scoreReport.getString("score");
         this.name = scoreReport.getString("name");
         this.detail = scoreReport.getString("detail");
     }
@@ -28,6 +30,10 @@ public class ScoreReport {
 
     public String getInning() {
         return inning;
+    }
+
+    public String getScore() {
+        return score;
     }
 
     public String getName() {

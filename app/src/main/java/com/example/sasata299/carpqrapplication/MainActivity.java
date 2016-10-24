@@ -2,8 +2,6 @@ package com.example.sasata299.carpqrapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,9 +28,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
         ButterKnife.bind(this);
 
         createSwipeRefreshLayout();
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         reloadTimeline();
     }
@@ -75,7 +70,10 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("logger", "clicked! " + String.valueOf(position));
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("sampleValue", "foobar");
+
+                ScoreReport scoreReport = (ScoreReport) parent.getItemAtPosition(position);
+                intent.putExtra("detail", scoreReport.getDetail());
+
                 startActivity(intent);
             }
         });

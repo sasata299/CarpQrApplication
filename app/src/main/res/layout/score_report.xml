@@ -17,12 +17,26 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/inning"
-            android:text="inning"
-            android:textSize="12dp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/score"
+                android:text="score"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:id="@+id/inning"
+                android:text="inning"
+                android:textSize="12dp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
