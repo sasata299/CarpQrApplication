@@ -27,19 +27,25 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-
-        MyPagerAdapter adapter = new MyPagerAdapter(this);
-
-        tabs.setupWithViewPager(viewPager);
-        viewPager.setAdapter(adapter);
+        setupViewPager();
 
         ButterKnife.bind(this);
 
-        createSwipeRefreshLayout();
+//        createSwipeRefreshLayout();
 
-        reloadTimeline();
+//        reloadTimeline();
+    }
+
+    public void setupViewPager() {
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        final String[] pageTitles = { "試合速報", "選手情報", "その他" };
+
+        MyPagerAdapter adapter = new MyPagerAdapter(this, pageTitles);
+
+        viewPager.setAdapter(adapter);
+        tabs.setupWithViewPager(viewPager);
     }
 
     public void reloadTimeline() {

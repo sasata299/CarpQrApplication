@@ -1,6 +1,7 @@
 package com.example.sasata299.carpqrapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,35 +13,24 @@ import android.widget.TextView;
  */
 
 public class MyPagerAdapter extends PagerAdapter {
+    private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private String[] mPageTitles;
 
-    public MyPagerAdapter(Activity activity) {
+    public MyPagerAdapter(Activity activity, String[] pageTitles) {
+        mContext = activity;
         mLayoutInflater = activity.getLayoutInflater();
+        mPageTitles = pageTitles;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return mPageTitles.length;
     }
 
     @Override
-    public String getPageTitle(int position) {
-
-        String pageTitle = "";
-
-        switch (position) {
-            case 0:
-                pageTitle = "試合速報";
-                break;
-            case 1:
-                pageTitle = "選手情報";
-                break;
-            case 2:
-                pageTitle = "その他";
-                break;
-        }
-
-        return pageTitle;
+    public CharSequence getPageTitle(int position) {
+        return mPageTitles[position];
     }
 
     @Override
