@@ -3,6 +3,8 @@ package com.example.sasata299.carpqrapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,17 +28,26 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("tab 1"));
-        tabs.addTab(tabs.newTab().setText("tab 2"));
-        tabs.addTab(tabs.newTab().setText("tab 3"));
-        tabs.setTabGravity(TabLayout.GRAVITY_FILL);
+        setupViewPager();
 
         ButterKnife.bind(this);
 
-        createSwipeRefreshLayout();
+//        createSwipeRefreshLayout();
 
-        reloadTimeline();
+//        reloadTimeline();
+    }
+
+    public void setupViewPager() {
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        final String[] pageTitles = { "試合速報", "選手情報", "その他" };
+
+        FragmentManager fm = getSupportFragmentManager();
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(fm, pageTitles);
+
+        viewPager.setAdapter(adapter);
+        tabs.setupWithViewPager(viewPager);
     }
 
     public void reloadTimeline() {
