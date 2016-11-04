@@ -3,6 +3,7 @@ package com.example.sasata299.carpqrapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
 
         final String[] pageTitles = { "試合速報", "選手情報", "その他" };
 
-        MyPagerAdapter adapter = new MyPagerAdapter(this, pageTitles);
+        FragmentManager fm = getSupportFragmentManager();
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(fm, pageTitles);
 
         viewPager.setAdapter(adapter);
         tabs.setupWithViewPager(viewPager);
