@@ -1,18 +1,14 @@
 package com.example.sasata299.carpqrapplication;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.LayoutInflater;
 
 /**
  * Created by sasata299 on 2016/11/03.
  */
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
     private String[] mPageTitles;
 
     public MyFragmentPagerAdapter(FragmentManager fm, String[] pageTitles) {
@@ -24,7 +20,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Fragment1();
+                return new ScoreReportFragment();
             case 1:
                 return new Fragment2();
             default:

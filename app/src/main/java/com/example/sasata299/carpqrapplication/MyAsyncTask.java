@@ -80,8 +80,8 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<ScoreReport>
     // OkHttpを使った処理
     public String run(String url) throws IOException {
         Request request = new Request.Builder()
-                .url(url)
-                .build();
+                            .url(url)
+                            .build();
 
         Response response = client.newCall(request).execute();
         return response.body().string();
