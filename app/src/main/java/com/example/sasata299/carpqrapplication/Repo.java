@@ -1,19 +1,23 @@
 package com.example.sasata299.carpqrapplication;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by sasata299 on 2016/12/26.
  */
 
 public class Repo {
     private String name;
-    private String full_name;
 
-    public String getFull_name() {
-        return full_name;
+    @SerializedName("full_name")
+    private String fullName;
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getName() {

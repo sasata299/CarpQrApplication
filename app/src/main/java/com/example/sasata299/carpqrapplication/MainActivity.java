@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
                 }
                 List<Repo> repos = response.body();
                 for (Repo repo : repos) {
-                    System.out.println(repo.getFull_name());
+                    System.out.println(repo.getFullName());
                 }
             }
         }).start();
