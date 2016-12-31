@@ -43,27 +43,30 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskCallback
                         .build();
 
                 GitHubService service = retrofit.create(GitHubService.class);
-                Call<User> call = service.user("sasata299");
-                Response<User> response = null;
-                try {
-                    response = call.execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                User user = response.body();
-                System.out.println(user.getLogin());
 
-//                Call<List<Repo>> call = service.listRepos("sasata299");
-//                Response<List<Repo>> response = null;
+//                // User API
+//                Call<User> call = service.user("sasata299");
+//                Response<User> response = null;
 //                try {
 //                    response = call.execute();
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-//                List<Repo> repos = response.body();
-//                for (Repo repo : repos) {
-//                    System.out.println(repo.getFullName());
-//                }
+//                User user = response.body();
+//                Log.d("login", user.getLogin());
+
+                // User List API
+                Call<List<Repo>> call = service.listRepos("sasata299");
+                Response<List<Repo>> response = null;
+                try {
+                    response = call.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                List<Repo> repos = response.body();
+                for (Repo repo : repos) {
+                    Log.d("name", repo.getFullName());
+                }
             }
         }).start();
 
