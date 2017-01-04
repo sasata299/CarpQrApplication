@@ -38,7 +38,7 @@ public class MyAsyncTask extends AsyncTask<Void, Integer, ArrayList<ScoreReport>
         ArrayList<ScoreReport> data = new ArrayList<>();
 
         try {
-            String result = run("http://sasata299.com:3000/score_reports");
+            String result = run("http://10.0.2.2:3000/score_reports");
             Log.i("show result", result);
             JSONObject resJson = new JSONObject(result);
             JSONArray scoreReports = resJson.getJSONArray("score_reports");
