@@ -1,18 +1,15 @@
 package com.example.sasata299.carpqrapplication;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.LayoutInflater;
+import android.util.Log;
 
 /**
  * Created by sasata299 on 2016/11/03.
  */
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
     private String[] mPageTitles;
 
     public MyFragmentPagerAdapter(FragmentManager fm, String[] pageTitles) {
@@ -20,14 +17,21 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         mPageTitles = pageTitles;
     }
 
+    void outputLog(int position) {
+        Log.i("logger", String.format("%s:[%d](%x)", Thread.currentThread().getStackTrace()[3].getMethodName(), position, this.hashCode()));
+    }
+
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Fragment1();
+                outputLog(position);
+                return new ScoreReportFragment();
             case 1:
+                outputLog(position);
                 return new Fragment2();
             default:
+                outputLog(position);
                 return new Fragment3();
         }
     }
