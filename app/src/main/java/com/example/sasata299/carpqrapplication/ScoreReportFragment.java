@@ -1,5 +1,6 @@
 package com.example.sasata299.carpqrapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,8 @@ public class ScoreReportFragment extends Fragment implements AsyncTaskCallback {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d("logger", "call onCreateView");
+
         View view = inflater.inflate(R.layout.score_report_listview, container, false);
 
         ButterKnife.bind(this, view);
