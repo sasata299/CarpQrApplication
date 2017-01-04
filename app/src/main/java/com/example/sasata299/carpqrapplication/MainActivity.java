@@ -13,6 +13,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://api.github.com/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                GitHubService service = retrofit.create(GitHubService.class);
+
+//                // User API
+//                Call<User> call = service.user("sasata299");
+//                Response<User> response = null;
+//                try {
+//                    response = call.execute();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                User user = response.body();
+//                Log.d("login", user.getLogin());
+
+                // User List API
+                Call<List<Repo>> call = service.listRepos("sasata299");
+                Response<List<Repo>> response = null;
+                try {
+                    response = call.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                List<Repo> repos = response.body();
+                for (Repo repo : repos) {
+                    Log.d("name", repo.getFullName());
+                }
+            }
+        }).start();
+
         setupViewPager();
     }
 
