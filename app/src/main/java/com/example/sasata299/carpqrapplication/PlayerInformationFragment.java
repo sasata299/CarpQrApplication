@@ -10,13 +10,13 @@ import android.view.ViewGroup;
  * Created by sasata299 on 2016/11/04.
  */
 
-public class Fragment2 extends Fragment {
-    public Fragment2() {
+public class PlayerInformationFragment extends Fragment {
+    public PlayerInformationFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment2, container, false);
+        View view = inflater.inflate(R.layout.player_information_fragment, container, false);
         return view;
     }
 }

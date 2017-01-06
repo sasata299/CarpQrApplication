@@ -29,7 +29,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new ScoreReportFragment();
             case 1:
                 outputLog(position);
-                return new Fragment2();
+                return new PlayerInformationFragment();
             default:
                 outputLog(position);
                 return new Fragment3();
