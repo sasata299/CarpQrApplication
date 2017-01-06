@@ -32,7 +32,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new PlayerInformationFragment();
             default:
                 outputLog(position);
-                return new Fragment3();
+                return new OtherFragment();
         }
     }
 
