@@ -1,6 +1,11 @@
 package com.example.sasata299.carpqrapplication.model;
 
+import android.util.Log;
+
+import com.example.sasata299.carpqrapplication.MessageEvent;
 import com.google.gson.annotations.SerializedName;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by sasata299 on 2016/12/26.
