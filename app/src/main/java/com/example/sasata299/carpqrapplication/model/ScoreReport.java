@@ -1,4 +1,4 @@
-package com.example.sasata299.carpqrapplication;
+package com.example.sasata299.carpqrapplication.model;
 
 import android.graphics.Bitmap;
 

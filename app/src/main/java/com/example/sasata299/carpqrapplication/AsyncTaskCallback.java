@@ -1,5 +1,7 @@
 package com.example.sasata299.carpqrapplication;
 
+import com.example.sasata299.carpqrapplication.model.ScoreReport;
+
 import java.util.ArrayList;
 
 /**

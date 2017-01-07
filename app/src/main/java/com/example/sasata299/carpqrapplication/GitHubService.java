@@ -1,5 +1,8 @@
 package com.example.sasata299.carpqrapplication;
 
+import com.example.sasata299.carpqrapplication.model.Repo;
+import com.example.sasata299.carpqrapplication.model.User;
+
 import java.util.List;
 
 import retrofit2.Call;

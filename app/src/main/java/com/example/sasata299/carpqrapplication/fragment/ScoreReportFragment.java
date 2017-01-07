@@ -1,6 +1,5 @@
-package com.example.sasata299.carpqrapplication;
+package com.example.sasata299.carpqrapplication.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.sasata299.carpqrapplication.AsyncTaskCallback;
+import com.example.sasata299.carpqrapplication.MyAdapter;
+import com.example.sasata299.carpqrapplication.MyAsyncTask;
+import com.example.sasata299.carpqrapplication.R;
+import com.example.sasata299.carpqrapplication.activity.DetailActivity;
+import com.example.sasata299.carpqrapplication.model.ScoreReport;
 
 import java.util.ArrayList;
 

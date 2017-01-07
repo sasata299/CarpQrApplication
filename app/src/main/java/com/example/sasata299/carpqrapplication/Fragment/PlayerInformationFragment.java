@@ -1,10 +1,12 @@
-package com.example.sasata299.carpqrapplication;
+package com.example.sasata299.carpqrapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.sasata299.carpqrapplication.R;
 
 /**
  * Created by sasata299 on 2016/11/04.

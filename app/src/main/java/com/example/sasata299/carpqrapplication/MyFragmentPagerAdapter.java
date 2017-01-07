@@ -5,6 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
+import com.example.sasata299.carpqrapplication.fragment.OtherFragment;
+import com.example.sasata299.carpqrapplication.fragment.PlayerInformationFragment;
+import com.example.sasata299.carpqrapplication.fragment.ScoreReportFragment;
+
 /**
  * Created by sasata299 on 2016/11/03.
  */

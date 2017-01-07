@@ -3,6 +3,8 @@ package com.example.sasata299.carpqrapplication;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.sasata299.carpqrapplication.model.ScoreReport;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

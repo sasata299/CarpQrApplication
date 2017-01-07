@@ -1,4 +1,4 @@
-package com.example.sasata299.carpqrapplication;
+package com.example.sasata299.carpqrapplication.model;
 
 /**
  * Created by sasata299 on 2016/12/26.

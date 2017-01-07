@@ -1,4 +1,4 @@
-package com.example.sasata299.carpqrapplication;
+package com.example.sasata299.carpqrapplication.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -6,6 +6,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.example.sasata299.carpqrapplication.MyFragmentPagerAdapter;
+import com.example.sasata299.carpqrapplication.R;
+import com.example.sasata299.carpqrapplication.model.Repo;
+import com.example.sasata299.carpqrapplication.GitHubService;
 
 import java.io.IOException;
 import java.util.List;

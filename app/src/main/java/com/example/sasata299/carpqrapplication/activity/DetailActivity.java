@@ -1,10 +1,12 @@
-package com.example.sasata299.carpqrapplication;
+package com.example.sasata299.carpqrapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.sasata299.carpqrapplication.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
