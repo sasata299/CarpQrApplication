@@ -7,4 +7,7 @@
     <color name="blue">#0000ff</color>
     <color name="green">#00ff00</color>
     <color name="yellow">#ffff00</color>
+
+    <color name="status_item_background_read">#FFFFFF</color>
+    <color name="status_item_background_unread">#E5F2F7</color>
 </resources>

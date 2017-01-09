@@ -13,11 +13,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sasata299.carpqrapplication.AsyncTaskCallback;
+import com.example.sasata299.carpqrapplication.ClickEvent;
 import com.example.sasata299.carpqrapplication.MyAdapter;
 import com.example.sasata299.carpqrapplication.MyAsyncTask;
 import com.example.sasata299.carpqrapplication.R;
 import com.example.sasata299.carpqrapplication.activity.DetailActivity;
 import com.example.sasata299.carpqrapplication.model.ScoreReport;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -38,6 +43,8 @@ public class ScoreReportFragment extends Fragment implements AsyncTaskCallback {
 
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+
+    MyAdapter myAdapter;
 
     public ScoreReportFragment() {
     }
@@ -82,7 +89,7 @@ public class ScoreReportFragment extends Fragment implements AsyncTaskCallback {
     public void postExecute(ArrayList<ScoreReport> result) {
         Log.i("logger", "postExecute");
 
-        MyAdapter myAdapter = new MyAdapter(getActivity());
+        myAdapter = new MyAdapter(getActivity());
         myAdapter.setScoreReports(result);
 
         // Adapterの指定
@@ -98,7 +105,9 @@ public class ScoreReportFragment extends Fragment implements AsyncTaskCallback {
                 ScoreReport scoreReport = (ScoreReport) parent.getItemAtPosition(position);
                 intent.putExtra("detail", scoreReport.getDetail());
 
-                startActivity(intent);
+                scoreReport.click();
+
+//                startActivity(intent);
             }
         });
     }
@@ -109,5 +118,24 @@ public class ScoreReportFragment extends Fragment implements AsyncTaskCallback {
 
     public void cancel() {
         Log.i("logger", "cancel");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onClickEvent(ClickEvent event) {
+        Log.d("hoge", "subscribe");
+        myAdapter.notifyDataSetChanged();
+        listView.invalidateViews();
     }
 }

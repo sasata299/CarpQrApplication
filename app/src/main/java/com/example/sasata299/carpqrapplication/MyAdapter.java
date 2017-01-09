@@ -1,6 +1,7 @@
 package com.example.sasata299.carpqrapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.sasata299.carpqrapplication.model.ScoreReport;
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -75,6 +79,12 @@ public class MyAdapter extends BaseAdapter {
         holder.scoreView.setText(scoreReport.getScore());
         holder.detailView.setText(scoreReport.getDetail());
 
+        Log.d("hoge", scoreReport.isRead.toString());
+        if (scoreReport.isRead == true) {
+            convertView.setBackgroundColor(R.color.status_item_background_read);
+        } else {
+            convertView.setBackgroundColor(R.color.status_item_background_unread);
+        }
         return convertView;
     }
 }
