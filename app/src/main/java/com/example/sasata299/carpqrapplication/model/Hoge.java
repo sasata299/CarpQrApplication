@@ -2,6 +2,7 @@ package com.example.sasata299.carpqrapplication.model;
 
 import android.util.Log;
 
+import com.example.sasata299.carpqrapplication.ClickEvent;
 import com.example.sasata299.carpqrapplication.MessageEvent;
 
 import org.greenrobot.eventbus.EventBus;

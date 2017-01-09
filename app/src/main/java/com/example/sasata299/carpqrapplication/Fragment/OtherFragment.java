@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.sasata299.carpqrapplication.ClickEvent;
 import com.example.sasata299.carpqrapplication.MessageEvent;
 import com.example.sasata299.carpqrapplication.R;
 import com.example.sasata299.carpqrapplication.model.Hoge;

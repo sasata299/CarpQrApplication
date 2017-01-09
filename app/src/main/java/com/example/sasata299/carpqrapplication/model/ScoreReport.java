@@ -1,7 +1,11 @@
 package com.example.sasata299.carpqrapplication.model;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
+import com.example.sasata299.carpqrapplication.ClickEvent;
+
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,11 +21,14 @@ public class ScoreReport {
     private String name;
     private String detail;
 
+    public Boolean isRead; // 既読管理
+
     public ScoreReport(JSONObject scoreReport) throws JSONException {
         this.inning = scoreReport.getString("inning");
         this.score = scoreReport.getString("score");
         this.name = scoreReport.getString("name");
         this.detail = scoreReport.getString("detail");
+        this.isRead = false;
     }
 
     public long getId() {
@@ -46,5 +53,11 @@ public class ScoreReport {
         } else {
             return name + "が" + detail;
         }
+    }
+
+    public void click() {
+        this.isRead = true;
+        Log.d("hoge", "発火");
+        EventBus.getDefault().post(new ClickEvent());
     }
 }
